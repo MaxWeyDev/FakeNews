@@ -1,4 +1,4 @@
-# используем библиотеку aiogram, т.к. она позволяет создавать асинхронных ботов в Телеграме
+import os
 import asyncio
 import logging
 from aiogram.client.bot import DefaultBotProperties
@@ -7,17 +7,13 @@ from aiogram import Bot, Dispatcher
 from aiogram.enums.parse_mode import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
 from handlers import router
-
-
-
-# токен нашего бота от BotFather
-BOT_TOKEN = "7402051024:AAFhS1emEY1NMv0MxZAw3RusYi1ZdtTJ-ck"
+from dotenv import load_dotenv
 
 
 
 async def main():
-
-    bot = Bot(token=BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+    load_dotenv()
+    bot = Bot(token=os.getenv('BOT_TOKEN'), default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 
     dp = Dispatcher(storage=MemoryStorage())
 
