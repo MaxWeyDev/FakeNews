@@ -35,10 +35,11 @@ async def check_text_for_fake(api_key, folder_id, user_text):
             return (await response.json())['result']['alternatives'][0]['message']['text']
 
 
-async def main():
-    result = await check_text_for_fake(
-        os.getenv('API_KEY'),
-        os.getenv('FOLDER_ID'),
+#async def main():
+    #result = await check_text_for_fake(
+        #os.getenv('API_KEY'),
+        #os.getenv('FOLDER_ID'),
+        #user_text=''
         #         """
         #         МОСКВА, 6 окт — РИА Новости. Десять альпак пород уакайа и сури появились на "Городской ферме" ВДНХ в Москве, сообщается на сайте мэра и правительства столицы.
         # "Они прибыли туда на зимовку и будут радовать посетителей до конца мая 2025 года. Животные разместились в специально оборудованных вольерах, где за ними будут тщательно ухаживать", — говорится в публикации.
@@ -59,13 +60,12 @@ async def main():
         #         """
         # "https://panorama.pub/19827-chelyabinsk-vmesto-chernobylya.html"
         # "Зрители в испуге разбежались с показа фильма Прибытие поезда",
-        "Китаец продавал туры в Челябинск, но возил туристов в Чернобыль",
         # "Индия перестала быть колонией Британии в 2000 году",
-    )
-    print(result)
+    #)
+    #return(result
 
-if __name__ == '__main__':
-    from dotenv import load_dotenv
+#if __name__ == '__main__':
+    #from dotenv import load_dotenv
 
-    load_dotenv()
-    asyncio.run(main())
+    #load_dotenv()
+    #asyncio.run(main())

@@ -8,6 +8,7 @@ from aiogram.enums.parse_mode import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
 from handlers import router
 from dotenv import load_dotenv
+import is_it_fake
 
 
 
