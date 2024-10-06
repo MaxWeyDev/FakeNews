@@ -13,6 +13,12 @@ router = Router()
 # Обработчик кнопки старт
 @router.message(Command("start"))
 async def start_handler(msg: Message):
+    users_list = open("users.txt", "r")
+    users_ids = set(users_list.readlines())
+    if msg.from_user.id not in users_ids:
+        with open("users.txt", 'a') as f:
+            #print(msg.from_user.id)
+            print(msg.from_user.id, file=f)
     await msg.answer(
         "Привет! Отправь мне новость, и я скажу тебе, фейк это или нет. /nЧтобы получить больше информации, используй команду /help")
 
