@@ -1,4 +1,6 @@
 # Импорт из библиотеки aiogram
+import asyncio
+
 from aiogram import types, F, Router
 from aiogram.types import Message
 from aiogram.filters import Command
@@ -23,8 +25,19 @@ async def help_command(msg: Message):
 
 @router.message()
 async def is_it_fake_answer(message: types.message):
+    have_sense = await is_it_fake.check_text_for_sense(
+        os.getenv('API_KEY'),
+        os.getenv('FOLDER_ID'),
+        user_text=message.text,
+    )
+    if not have_sense:
+        await message.answer('Ваше сообщение не имеет смысла')
+        return
+    await asyncio.sleep(1)
     result = await is_it_fake.check_text_for_fake(
         os.getenv('API_KEY'),
         os.getenv('FOLDER_ID'),
-        user_text=message.text)
+        user_text=message.text,
+    )
+    print(result)
     await message.answer(result)
