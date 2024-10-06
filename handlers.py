@@ -20,7 +20,7 @@ async def start_handler(msg: Message):
             #print(msg.from_user.id)
             print(msg.from_user.id, file=f)
     await msg.answer(
-        "Привет! Отправь мне новость, и я скажу тебе, фейк это или нет. /nЧтобы получить больше информации, используй команду /help")
+        "Привет! Отправь мне новость, и я скажу тебе, фейк это или нет. Чтобы получить больше информации, используй команду /help")
 
 
 @router.message(Command("help"))
